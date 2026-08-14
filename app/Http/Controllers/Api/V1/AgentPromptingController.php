@@ -31,15 +31,26 @@ class AgentPromptingController extends Controller
 
         // $agent = BasicAgent::make();
 
-        $prompt = $request->input('prompt');
+        try {
+            $prompt = $request->input('prompt');
 
-        $response = (new BasicAgent)->prompt($prompt);
+            $response = (new BasicAgent)->prompt(
+                $prompt
+                // provider: "gemini",
+                // model: "gemini-2.5-flash-lite"
+            );
 
-        return response()->json([
-            'prompt' => 'Prompt with user input',
-            'message' => (string) $prompt,
-            'response' => (string) $response,
-        ]);
+            return response()->json([
+                'prompt' => 'Prompt with user input',
+                'message' => (string) $prompt,
+                'response' => (string) $response,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'prompt' => 'Prompt with user input',
+                'message' => $e->getMessage(),
+            ]);
+        }
 
     }
 
