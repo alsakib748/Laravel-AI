@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AgentPromptingController;
 use App\Http\Controllers\Api\V1\SetupController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +22,9 @@ Route::prefix('v1')->group(function () {
 Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 
     Route::get('/me', [SetupController::class, 'me']);
+
+    Route::get('/basic', [AgentPromptingController::class, 'Basic']);
+
+    Route::post('/prompt', [AgentPromptingController::class, 'promptWithInput']);
 
 });
