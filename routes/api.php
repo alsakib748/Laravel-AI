@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AgentConfigController;
 use App\Http\Controllers\Api\V1\AgentPromptingController;
 use App\Http\Controllers\Api\V1\ConversationalAgentController;
 use App\Http\Controllers\Api\V1\SetupController;
@@ -43,5 +44,10 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::get('/anonymous/simple', [StructuredOutputController::class, 'simpleAnonymousAgent']);
 
     Route::post('/anonymous/structured', [StructuredOutputController::class, 'anonymousStructuredAgent']);
+
+    // todo: Customize Agent
+    Route::post('/config/creative', [AgentConfigController::class, 'creativeWrite']);
+    Route::post('/config/extract', [AgentConfigController::class, 'extractContact']);
+
 
 });

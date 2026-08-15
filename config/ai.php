@@ -19,7 +19,8 @@ return [
     // 'default_for_transcription' => 'openai',
     // 'default_for_embeddings' => 'openai',
     // 'default_for_reranking' => 'cohere',
-    'default' => 'gemini',
+    // 'default' => 'gemini',
+    'default' => env('AI_PROVIDER', 'gemini'),
     'default_for_images' => 'gemini',
     'default_for_audio' => 'gemini',
     'default_for_transcription' => 'gemini',
@@ -36,6 +37,7 @@ return [
     | based on your application's available caching stores and needs.
     |
     */
+
 
     'caching' => [
         'embeddings' => [
