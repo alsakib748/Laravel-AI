@@ -39,4 +39,9 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     // todo: Structured Output
     Route::post('/structured/sentiment', [StructuredOutputController::class, 'analyzeSentiment']);
 
+    // todo: Anonymous Agent
+    Route::get('/anonymous/simple', [StructuredOutputController::class, 'simpleAnonymousAgent']);
+
+    Route::post('/anonymous/structured', [StructuredOutputController::class, 'anonymousStructuredAgent']);
+
 });
