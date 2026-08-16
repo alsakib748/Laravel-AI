@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Ai\Agents\DocumentAnalyzer;
 
 use Laravel\Ai\Files\Document;
+use Laravel\Ai\Files\Image;
 
 use App\Ai\Agents\ImageAnalyzer;
 
@@ -58,7 +59,8 @@ class FilePromptController extends Controller
         $response = (new ImageAnalyzer)->prompt(
             $question,
             attachments: [
-                $uploadedImage
+                // $uploadedImage
+                Image::fromUrl('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFgwzBGSon7TMLVpI3h672yE57QKgwGW088B-nDgUWDA&s=10')
             ]
         );
 
