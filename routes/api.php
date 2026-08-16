@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\AgentConfigController;
 use App\Http\Controllers\Api\V1\AgentPromptingController;
 use App\Http\Controllers\Api\V1\ConversationalAgentController;
 use App\Http\Controllers\Api\V1\FilePromptController;
+use App\Http\Controllers\Api\V1\ImageGenerationController;
 use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\SetupController;
 use App\Http\Controllers\Api\V1\StructuredOutputController;
@@ -65,5 +66,8 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 
     // todo: Image
     Route::post('/files/analyze-image', [FilePromptController::class, 'analyzeImage']);
+
+    // todo: Image Generation
+    Route::post('/images/generate', [ImageGenerationController::class, 'generateImage']);
 
 });
