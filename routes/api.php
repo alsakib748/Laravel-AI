@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\V1\AgentPromptingController;
 use App\Http\Controllers\Api\V1\ConversationalAgentController;
 use App\Http\Controllers\Api\V1\SetupController;
 use App\Http\Controllers\Api\V1\StructuredOutputController;
+use App\Http\Controllers\Api\V1\ToolUsageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +50,7 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/config/creative', [AgentConfigController::class, 'creativeWrite']);
     Route::post('/config/extract', [AgentConfigController::class, 'extractContact']);
 
+    // todo: Using Tool in an agent
+    Route::post('/tools/time-assistant', [ToolUsageController::class, 'getRequestedTime']);
 
 });
