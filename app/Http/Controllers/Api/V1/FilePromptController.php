@@ -28,7 +28,8 @@ class FilePromptController extends Controller
         $response = (new DocumentAnalyzer)->prompt(
             $question,
             attachments: [
-                $document,
+                // $document,
+                Document::fromStorage("bug-tracker.md")
             ]
         );
 
