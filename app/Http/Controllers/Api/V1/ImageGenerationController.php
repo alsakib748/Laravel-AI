@@ -25,7 +25,12 @@ class ImageGenerationController extends Controller
 
         // $image = Image::of($prompt)->generate(provider: 'openai');
 
-        $image = Image::of($prompt)->generate();
+        // $image = Image::of($prompt)->generate();
+
+        $image = Image::of($prompt)
+            ->landscape()
+            ->quality('medium')
+            ->generate();
 
         $path = $image->store('', 'public');
 
