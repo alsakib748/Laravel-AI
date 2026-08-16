@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AgentConfigController;
 use App\Http\Controllers\Api\V1\AgentPromptingController;
 use App\Http\Controllers\Api\V1\ConversationalAgentController;
+use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\SetupController;
 use App\Http\Controllers\Api\V1\StructuredOutputController;
 use App\Http\Controllers\Api\V1\ToolUsageController;
@@ -52,5 +53,8 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 
     // todo: Using Tool in an agent
     Route::post('/tools/time-assistant', [ToolUsageController::class, 'getRequestedTime']);
+
+    // todo: Web Search
+    Route::post('/web/research', [SearchController::class, 'research']);
 
 });
