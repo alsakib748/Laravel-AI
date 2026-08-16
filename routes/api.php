@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AgentConfigController;
 use App\Http\Controllers\Api\V1\AgentPromptingController;
 use App\Http\Controllers\Api\V1\ConversationalAgentController;
+use App\Http\Controllers\Api\V1\FilePromptController;
 use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\SetupController;
 use App\Http\Controllers\Api\V1\StructuredOutputController;
@@ -58,5 +59,8 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/web/research', [SearchController::class, 'research']);
 
     Route::post('/fetch/analyze', [SearchController::class, 'analyzePage']);
+
+    // todo: Files
+    Route::post('/files/analyze-document', [FilePromptController::class, 'analyzeDocument']);
 
 });
