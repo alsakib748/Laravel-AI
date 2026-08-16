@@ -9,7 +9,10 @@ use App\Ai\Agents\DocumentAnalyzer;
 
 use Laravel\Ai\Files\Document;
 
+use App\Ai\Agents\ImageAnalyzer;
+
 use Illuminate\Http\JsonResponse;
+
 
 class FilePromptController extends Controller
 {
@@ -38,6 +41,32 @@ class FilePromptController extends Controller
             'filename' => $document->getClientOriginalName(),
             'question' => $question,
             'answer' => (string) $response,
+        ]);
+
+    }
+
+    public function analyzeImage(Request $request): JsonResponse
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp|max:10240',
+            'question' => 'required|string|max:500'
+        ]);
+
+        $question = $request->input('question');
+        $uploadedImage = $request->file('image');
+
+        $response = (new ImageAnalyzer)->prompt(
+            $question,
+            attachments: [
+                $uploadedImage
+            ]
+        );
+
+        return response()->json([
+            'chat' => 'Image Analyzer',
+            'filename' => $uploadedImage->getClientOriginalName(),
+            'question' => $question,
+            'answer' => (string) $response
         ]);
 
     }

@@ -63,4 +63,7 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     // todo: Files
     Route::post('/files/analyze-document', [FilePromptController::class, 'analyzeDocument']);
 
+    // todo: Image
+    Route::post('/files/analyze-image', [FilePromptController::class, 'analyzeImage']);
+
 });
