@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Ai\Agents\PageAnalyzer;
 use App\Ai\Agents\WebResearcher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -23,6 +24,25 @@ class SearchController extends Controller
         return response()->json([
             'chat' => 'Web Researcher (General Search)',
             'question' => $question,
+            'answer' => (string) $response,
+        ]);
+
+    }
+
+    public function analyzePage(Request $request): JsonResponse
+    {
+
+        $request->validate([
+            'prompt' => 'required|string|max:1000'
+        ]);
+
+        $prompt = $request->input('prompt');
+
+        $response = (new PageAnalyzer)->prompt($prompt);
+
+        return response()->json([
+            'chat' => 'Page Analyzer (WebFetch)',
+            'prompt' => $prompt,
             'answer' => (string) $response,
         ]);
 

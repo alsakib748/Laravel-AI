@@ -57,4 +57,6 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     // todo: Web Search
     Route::post('/web/research', [SearchController::class, 'research']);
 
+    Route::post('/fetch/analyze', [SearchController::class, 'analyzePage']);
+
 });
