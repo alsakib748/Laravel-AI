@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AgentConfigController;
 use App\Http\Controllers\Api\V1\AgentPromptingController;
+use App\Http\Controllers\Api\V1\AudioGenerationController;
 use App\Http\Controllers\Api\V1\ConversationalAgentController;
 use App\Http\Controllers\Api\V1\FilePromptController;
 use App\Http\Controllers\Api\V1\ImageGenerationController;
@@ -69,5 +70,8 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 
     // todo: Image Generation
     Route::post('/images/generate', [ImageGenerationController::class, 'generateImage']);
+
+    // todo: Text-to-Speech
+    Route::post('/audio/generate', [AudioGenerationController::class, 'generateAudio']);
 
 });
