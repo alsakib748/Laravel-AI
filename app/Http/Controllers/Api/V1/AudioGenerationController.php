@@ -20,7 +20,13 @@ class AudioGenerationController extends Controller
 
         $textInput = $request->input('text');
 
-        $audio = Audio::of($textInput)->generate();
+        // $audio = Audio::of($textInput)
+        //     ->male()
+        //     ->generate();
+
+        $audio = Audio::of($textInput)
+            ->instructions("Say it like a Pirate")
+            ->generate();
 
         $path = $audio->store('audio', 'public');
 
