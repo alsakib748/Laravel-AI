@@ -74,4 +74,6 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     // todo: Text-to-Speech
     Route::post('/audio/generate', [AudioGenerationController::class, 'generateAudio']);
 
+    Route::post('/audio/transcribe', [AudioGenerationController::class, 'transcribeAudio']);
+
 });
